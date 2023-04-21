@@ -4,6 +4,7 @@
  */
 
 function length(str) {
+  return str.length;
 }
 
 /**
@@ -12,6 +13,11 @@ function length(str) {
  */
 
 function lengthIsEven(str) {
+  let flag = false;
+  if(str.length % 2 === 0) {
+    flag = true;
+  }
+  return flag;
 }
 
 /**
@@ -20,6 +26,7 @@ function lengthIsEven(str) {
  */
 
 function firstChar(str) {
+  return str.substr(0, 1);
 }
 
 /**
@@ -28,6 +35,7 @@ function firstChar(str) {
  */
 
 function lastChar(str) {
+  return str.substr(str.length -1);
 }
 
 /**
@@ -37,6 +45,7 @@ function lastChar(str) {
  */
 
 function substring(str, a, b) {
+  return str.substr(a - 1, b);
 }
 
 /**
@@ -51,6 +60,11 @@ function substring(str, a, b) {
  * */
 
 function isInclude(a, b) {
+  let flag = false;
+  if(a.indexOf(b) != -1) {
+    flag = true;
+  }
+  return flag;
 }
 
 /**
@@ -69,6 +83,9 @@ function isInclude(a, b) {
  */
 
 function printByChar(str) {
+  for(i = 0; i < str.length; i++) {
+    console.log(str.substr(i, 1));
+  }
 }
 
 
