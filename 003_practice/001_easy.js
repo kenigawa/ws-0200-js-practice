@@ -12,6 +12,11 @@
  */
 
 function length(str) {
+  if(!str) {
+    return 0;
+  }
+  let last_str = str.slice(-1);
+  return str.indexOf(last_str) + 1; 
 }
 
 /**
@@ -26,6 +31,11 @@ function length(str) {
  *
  */
 function reverse(str) {
+  let reverse = "";
+  for(let i = 1; i <= str.length; i++) {
+    reverse += str[str.length -i];
+  }
+  return reverse;
 }
 
 /**
@@ -41,6 +51,7 @@ function reverse(str) {
  */
 
 function findIndex(str, char) {
+  return str.indexOf(char);
 }
 
 /**
@@ -56,6 +67,7 @@ function findIndex(str, char) {
  */
 
 function split(a, b) {
+  return a.split(b);
 }
 
 /**
@@ -71,6 +83,7 @@ function split(a, b) {
  */
 
 function sum(array) {
+  return array.reduce((sum, el) => sum + el, 0);
 }
 
 /**
@@ -88,7 +101,13 @@ function sum(array) {
  */
 
 function average(array) {
+  if(array.length === 0) {
+    return 0;
+  }
+  let sum = array.reduce((acc, el) => acc + el, 0);
+  return Math.floor(sum / array.length);
 }
+
 
 /**
  *  配列の結合
@@ -103,6 +122,10 @@ function average(array) {
  */
 
 function concat(a, b) {
+  for(let i = 0; i < b.length; i++) {
+    a.push(b[i]);
+  }
+  return a;
 }
 
 /**
@@ -118,6 +141,7 @@ function concat(a, b) {
  */
 
 function size(array) {
+  return array.length;
 }
 
 /**
@@ -134,6 +158,10 @@ function size(array) {
  */
 
 function minMax(array) {
+  if(array.length === 0) {
+    return 3;
+  }
+  console.log(`max: ${Math.max(...array)}, min: ${Math.min(...array)}`);
 }
 
 /**
@@ -148,6 +176,11 @@ function minMax(array) {
  */
 
 function seq(num) {
+  let array = [];
+  for(let i = 0; i < num; i++) {
+    array.push(i);
+  }
+  return array;
 }
 
 /**
@@ -163,6 +196,13 @@ function seq(num) {
  */
 
 function omitSeq(num) {
+  let array = [];
+  for(let i = 0; i <= num; i++) {
+    if(i % 2 !== 0) {
+      array.push(i);
+    }
+  }
+  return array;
 }
 
 /**
@@ -178,6 +218,13 @@ function omitSeq(num) {
  */
 
 function filter(array, num) {
+  let arr = [];
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] <= num) {
+      arr.push(array[i]);
+    }
+  }
+  return arr;
 }
 
 
@@ -206,6 +253,19 @@ function filter(array, num) {
  */
 
 function fizzBuzz () {
+  for(let i = 1; i <= 100; i++) {
+    if((i % 3 === 0) && (i % 5 === 0)) {
+      console.log(`${i} FizzBuzz`);
+      continue;
+    }
+    if(i % 3 === 0) {
+      console.log(`${i} Fizz`);
+      continue;
+    }
+    if(i % 5 === 0) {
+      console.log(`${i} Buzz`);
+    }
+  }
 }
 
 module.exports = {

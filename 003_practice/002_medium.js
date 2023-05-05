@@ -10,6 +10,22 @@
  *
  */
 function rotate(str, num) {
+  let cutStr = "";
+  let remainingStr = "";
+
+  if(num === 0) {
+    return str;
+  }
+  if(num > 0) {
+    cutStr = str.slice(-num);
+    remainingStr = str.substring(0, str.length - num);
+    return cutStr += remainingStr;
+  }
+  if(num < 0) {
+    cutStr = str.slice(0, -num);
+    remainingStr = str.substring(-num);
+    return remainingStr += cutStr;
+  }
 }
 
 /**
@@ -24,6 +40,10 @@ function rotate(str, num) {
  *
  */
 function removeVowels(str) {
+  removedStr = [...str].filter(el => {
+    return "aiueo".includes(el) ? "" : el;
+  });
+  return removedStr.join("");
 }
 
 /**
@@ -38,6 +58,7 @@ function removeVowels(str) {
  *
  */
 function countStr(s1, s2) {
+ return s1.match(new RegExp(s2, "g")).length;
 }
 
 /**
@@ -53,6 +74,13 @@ function countStr(s1, s2) {
  */
 
 function isPalindrome(str) {
+  for(let i = 0; i < str.length; i++) {
+    // 前からの文字と後ろからの文字が同じではない場合
+    if(str[i] !== str[str.length - i - 1]) {
+      return false;
+    }  
+  }
+  return true;
 }
 
 /**
@@ -70,6 +98,19 @@ function isPalindrome(str) {
  *
  */
 function isPrime(num) {
+  switch(num) {
+    case 1:
+      return false;
+    case 2:
+      return true;
+    default:
+      for(let i = 2; i < num; i++) {
+        // 2以上の数で割り切れるものがないか確認
+        if(num % i === 0) return false;
+        // 割り切れるものがない場合
+        if(i + 1 === num ) return true;
+      }
+  }
 }
 
 /**
@@ -88,6 +129,13 @@ function isPrime(num) {
  *
  */
 function sumWithout4andNext(array) {
+  for(let i = 0; i < array.length; i++) {
+    if(array[i] === 4) {
+      array[i] = null;
+      array[i + 1] = null;
+    }
+  }
+  return array.reduce((acc, el) => acc + el, 0);
 }
 
 module.exports = {

@@ -22,17 +22,7 @@
  */
 
 class Person {
-  constructor(name, age, bio) {
-    if(name === undefined) {
-      name = "";
-    }
-    if(age === undefined) {
-      age = 0;
-    }
-    if(bio === undefined) {
-      bio = "";
-    }
-
+  constructor(name = "", age = 0, bio = "") {
     this.name = name;
     this.age = age;
     this.bio = bio;

@@ -11,6 +11,11 @@
  */
 
 function sumSequence (n, sum = 0) {
+  sum += n;
+  if(n <= 0) {
+    return sum;
+  }
+  return sumSequence(n - 1, sum);
 }
 
 /**
@@ -24,6 +29,10 @@ function sumSequence (n, sum = 0) {
  */
 
 function fibonacci (num) {
+  if(num < 2) {
+    return num;
+  }
+  return fibonacci(num - 1) + fibonacci(num - 2);
 }
 
 
@@ -80,6 +89,14 @@ function fibonacci (num) {
  */
 
 function fileSize (node, sum = 0) {
+  sum += node.size;
+  if(node.type === "file") {
+    return fileSize(node[node.length - 1], sum);
+  }
+  if(node.type === "folder") {
+    return fileSize(node.children[node.children.length - 1], sum);
+  }
+  return sum;
 }
 
 

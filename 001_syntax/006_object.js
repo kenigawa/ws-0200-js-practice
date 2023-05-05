@@ -79,13 +79,13 @@ function assignNumber(persons) {
  */
 
 function isDuplicate(array) {
-  const knownElements = {};
+  const elements = {};
 
   for(const el of array) {
-    if(el in knownElements) {
+    if(el in elements) {
       return true;
     }
-    knownElements[el] = true;
+    elements[el] = true;
   }
   return false;
 }

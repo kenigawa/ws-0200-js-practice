@@ -57,7 +57,11 @@ class List {
    */
   remove(targetIndex) {
     // TODO:
-    return this.data.remove(targetIndex);
+    this.data.splice(targetIndex, 1);
+    if(targetIndex > this.data.length -1) {
+      return undefined;
+    }
+    return this.data.length;
   }
 
   /** リストの 末尾の要素を取得する
@@ -123,15 +127,14 @@ class List {
    */
   filter(target) {
     // TODO:
-    const array = [];
+    const list = new List([]);
     for(let element of this.data) {
       if(target === element) {
         continue;
       }
-      array.push(element)
-      ;
+      list.push(element);
     }
-    return array;
+    return list;
   }
 }
 
@@ -162,6 +165,7 @@ class Stack {
    */
   push(item) {
     // TODO:
+    this.data.push(item);
   }
 
   /** スタックから要素を取得する
@@ -171,6 +175,7 @@ class Stack {
    */
   pop() {
     // TODO:
+    return this.data.pop();
   }
 
   /** スタックの末尾の要素を参照する
@@ -180,6 +185,7 @@ class Stack {
    */
   peek() {
     // TODO:
+    return this.data[this.data.length -1];
   }
 }
 
@@ -211,6 +217,7 @@ class Queue {
    */
   enqueue(item) {
     // TODO:
+    this.data.push(item);
   }
 
   /** キューから要素を取得する
@@ -219,6 +226,7 @@ class Queue {
    */
   dequeue() {
     // TODO:
+    return this.data.shift();
   }
 
   /** キューの要素を参照する
@@ -227,6 +235,8 @@ class Queue {
    */
   peek() {
     // TODO:
+    return 
+    this.data[0];
   }
 }
 

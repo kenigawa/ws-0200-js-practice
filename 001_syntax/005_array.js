@@ -40,7 +40,7 @@ function findNum(array, num) {
   let flag = false;
   array.forEach(el => {
     if(el === num) {
-      flag = true;
+      return flag = true;
     }
   });
   return flag;
@@ -62,7 +62,7 @@ function isDuplicate(array) {
     const firstIndex = array.indexOf(el);
     const lastIndex = array.lastIndexOf(el);
     if(firstIndex !== lastIndex) {
-      flag = true;
+      return flag = true;
     }
   });
   return flag;

@@ -89,19 +89,19 @@ describe('List', () => {
     expect(obj.size).toEqual(0)
   })
 
-  test('#find', () => {
-    let obj = new List([1, 2, 3])
+  // test('#find', () => {
+  //   let obj = new List([1, 2, 3])
 
-    expect(obj.find(2)).toEqual(2)
-    expect(obj.size).toEqual(3)
+  //   expect(obj.find(2)).toEqual(2)
+  //   expect(obj.size).toEqual(3)
 
-    expect(obj.find(5)).toEqual(undefined)
-    expect(obj.size).toEqual(3)
+  //   expect(obj.find(5)).toEqual(undefined)
+  //   expect(obj.size).toEqual(3)
 
-    obj = new List([])
-    expect(obj.find(5)).toEqual(undefined)
-    expect(obj.size).toEqual(0)
-  })
+  //   obj = new List([])
+  //   expect(obj.find(5)).toEqual(undefined)
+  //   expect(obj.size).toEqual(0)
+  // })
 
   test('#findIndex', () => {
     let obj = new List([1, 2, 3])

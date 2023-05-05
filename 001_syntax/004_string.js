@@ -13,11 +13,7 @@ function length(str) {
  */
 
 function lengthIsEven(str) {
-  let flag = false;
-  if(str.length % 2 === 0) {
-    flag = true;
-  }
-  return flag;
+  return str.length % 2 === 0;
 }
 
 /**
@@ -26,7 +22,10 @@ function lengthIsEven(str) {
  */
 
 function firstChar(str) {
-  return str.substr(0, 1);
+  if(!str) {
+    return str;
+  }
+  return str[0];
 }
 
 /**
@@ -35,7 +34,11 @@ function firstChar(str) {
  */
 
 function lastChar(str) {
-  return str.substr(str.length -1);
+  if(!str) {
+    return str;
+  }
+
+  return str[str.length -1];
 }
 
 /**
@@ -45,7 +48,20 @@ function lastChar(str) {
  */
 
 function substring(str, a, b) {
-  return str.substr(a - 1, b);
+  // return str.substr(a - 1, b);
+
+  //for文でも考える
+  let after_str = "";
+  if(str.length < b) {
+    b = str.length;
+  }
+  for(; a <= b; a++) {
+    if(!str) {
+      return str;
+    }
+    after_str += str[a -1]; 
+  }
+  return after_str;
 }
 
 /**
@@ -60,12 +76,31 @@ function substring(str, a, b) {
  * */
 
 function isInclude(a, b) {
-  let flag = false;
-  if(a.indexOf(b) != -1) {
-    flag = true;
+  // return a.includes(b);
+  // return a.indexOf(b) !== -1;
+
+  // for文でも考える
+  if(!b) {
+    return true;
   }
-  return flag;
+
+  let str = "";
+  // bを1文字ずつ抽出
+  for(let i = 0; i < b.length; i++) {
+    // aを1文字ずつ抽出
+    for(let j = 0; j < a.length; j++) {
+      if(b[i] === a[j] && b[i - 1] === a[j - 1]) {
+        str += b[i];
+      }
+      if(str === b) {
+        return true;
+      }
+    }
+  }
+  return false;
+
 }
+
 
 /**
  *  4.7 引数で渡された文字列を一文字ずつ表示するメソッドを実装してください
@@ -84,7 +119,10 @@ function isInclude(a, b) {
 
 function printByChar(str) {
   for(i = 0; i < str.length; i++) {
-    console.log(str.substr(i, 1));
+    // console.log(str.substr(i, 1));
+
+    // 添字を使用しても考える
+    console.log(str[i]);
   }
 }
 
