@@ -29,12 +29,20 @@ function sumSequence (n, sum = 0) {
  */
 
 function fibonacci (num) {
-  if(num < 2) {
-    return num;
+  if(num === 0) {
+    return [];
   }
-  return fibonacci(num - 1) + fibonacci(num - 2);
+  if(num === 1) {
+    return [1];
+  }
+  if(num === 2) {
+    return [1, 1];
+  }
+  // numの1つ前までのリストを取得
+  const list = fibonacci(num - 1);
+  // リスト全量を取得し、リストの最後の1つ前と2つ前を合計して最後の値を取得する
+  return [...list, list[list.length - 1] + list[list.length - 2]];
 }
-
 
 /**
  *  2.4.2 ディレクトリに含まれるファイルサイズの合計
@@ -89,14 +97,17 @@ function fibonacci (num) {
  */
 
 function fileSize (node, sum = 0) {
-  sum += node.size;
-  if(node.type === "file") {
-    return fileSize(node[node.length - 1], sum);
+  // childrenがない場合
+  if(!node.children || node.children.length === 0) {
+    return node.size;
   }
-  if(node.type === "folder") {
-    return fileSize(node.children[node.children.length - 1], sum);
+
+  let childrenSize = 0;
+  for(let i = 0; i < node.children.length; i++) {
+    const child = node.children[i];
+    childrenSize += fileSize(child);
   }
-  return sum;
+  return childrenSize;
 }
 
 

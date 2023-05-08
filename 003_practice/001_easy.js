@@ -12,11 +12,11 @@
  */
 
 function length(str) {
-  if(!str) {
-    return 0;
+  let i = 0;
+  while(str[i]) {
+    i++;
   }
-  let last_str = str.slice(-1);
-  return str.indexOf(last_str) + 1; 
+  return i;
 }
 
 /**
@@ -51,9 +51,13 @@ function reverse(str) {
  */
 
 function findIndex(str, char) {
-  return str.indexOf(char);
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] === char) {
+      return i;
+    }
+  }
+  return -1;
 }
-
 /**
  *  指定された文字列を指定された文字で分割
  *
@@ -141,7 +145,12 @@ function concat(a, b) {
  */
 
 function size(array) {
-  return array.length;
+  // return array.length;
+  let i = 0;
+  while(array[i]) {
+    i++;
+  }
+  return i;
 }
 
 /**
@@ -161,7 +170,20 @@ function minMax(array) {
   if(array.length === 0) {
     return 3;
   }
-  console.log(`max: ${Math.max(...array)}, min: ${Math.min(...array)}`);
+
+  let max;
+  let min;
+  for(let i = 0; i < array.length; i++) {
+    max = array[0];
+    min = array[0];
+    if(max < array[i]) {
+      max = array[i];
+    }
+    if(min > array[i]) {
+      min = array[i];
+    }
+  }
+  console.log(`max: ${max}, min: ${min}`);
 }
 
 /**

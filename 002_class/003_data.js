@@ -108,9 +108,9 @@ class List {
    */
   findIndex(target) {
     // TODO:
-    for(let element of this.data) {
-      if(target === element) {
-        return this.data.indexOf(element);
+    for(let i = 0; i < this.data.length; i++) {
+      if(target === this.data[i]) {
+        return i;
       }
     }
     return -1;
@@ -235,8 +235,7 @@ class Queue {
    */
   peek() {
     // TODO:
-    return 
-    this.data[0];
+    return this.data[0];
   }
 }
 
